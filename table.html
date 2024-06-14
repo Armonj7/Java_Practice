@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dynamic Table</title>
+    </head>
+    
+    <h1>Dynamic Table</h1>
+    
+    <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    td {
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    th {
+      background-color: lightseagreen;
+    }
+
+    tr:hover {
+      background-color: lightyellow;
+    }
+
+    body {
+      background-color:seashell;
+    }
+    </style>
+    
+    <body>
+        <div id='mountains'></div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Height</th>
+                <th>Place</th>
+            </tr>
+
+            <tr>
+                <td>Mount Everest</td>
+                <td>8849</td>
+                <td>Nepal/China</td> 
+            
+            <tr>
+                <td>Kilimanjaro</td>
+                <td>5895</td>
+                <td>Tanzania</td>
+            </tr>
+
+            <tr>
+                <td>Denali</td>
+                <td>6190</td>
+                <td>United States</td> 
+            </tr>
+
+            <tr>
+                <td>Aconcagua</td>
+                <td>6961</td>
+                <td>Argentina</td> 
+            </tr>
+        </table>
+
+        <script>
+const parentElement = document.getElementById('mountains');
+const table = document.createElement('table');
+const propertyNames = Object.keys(mountains[0]);
+
+const headerRow = document.createElement('tr');
+propertyNames.forEach(property => {
+  const th = document.createElement('th');
+  th.textContent = property;
+  headerRow.appendChild(th);
+});
+table.appendChild(headerRow);
+
+mountains.forEach(mountain => {
+  const row = document.createElement('tr');
+  propertyNames.forEach(property => {
+    const cell = document.createElement('td');
+    cell.textContent = mountain[property];
+    row.appendChild(cell);
+  });
+  table.appendChild(row);
+});
+
+parentElement.appendChild(table);
+
+// Right-align cells with numeric values
+const heightCells = table.querySelectorAll('td:nth-child(2)');
+heightCells.forEach(cell => {
+  cell.style.textAlign = 'right';
+});
+        </script>
+    </body>
+</html>
